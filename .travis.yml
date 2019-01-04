@@ -4,7 +4,7 @@ node_js:
 addon:
   code_climate:
      repo_token: 19fe087efc8cce3c903638c3e4fd175df9471050a8d99df5fbfed4f623c1ac51
-script: istanbul cover npm test -- -R spec
+script: istanbul cover npm test -- -R test
 before_script:
   - npm install codeclimate-test-reporter istanbul -g
 after_script:
