@@ -28,7 +28,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha",
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
+    "codeclimate-report": "codeclimate-test-reporter < ./coverage/lcov.info",
   },
   "engines": {
     "node": "10.8.0"
