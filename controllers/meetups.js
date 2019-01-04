@@ -42,10 +42,6 @@ exports.createMeetup = (req, res) => {
     res.status(400).send('What Date will the Event Take Place');
     return;
   }
-  if (!req.body.tags) {
-    res.status(400).send('Tags is Required');
-    return;
-  }
 
   const meetup = {
     id: meetups.length + 1,
