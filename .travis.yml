@@ -1,11 +1,8 @@
 language: node_js
 node_js:
  - "10.8.0"
-addon:
-  code_climate:
-     repo_token: 19fe087efc8cce3c903638c3e4fd175df9471050a8d99df5fbfed4f623c1ac51
 script:
-    - nyc mocha --exit --compilers ./test/**/*.spec.js
-    - nyc --reporter=lcov --reporter=text-lcov --require _mocha --exit test/*.spec.js
-    - nyc report --reporter=text-lcov | coveralls
-    - codeclimate-test-reporter < ./coverage/lcov.info
+  - npm test
+after_success:
+  - npm run report-coverage
+  - npm run codeclimate-report
