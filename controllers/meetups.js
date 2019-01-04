@@ -30,18 +30,10 @@ exports.getMeetupsById = (req, res) => {
 };
 
 exports.createMeetup = (req, res) => {
-  if (!req.body.location) {
-    res.status(400).send('Location is Required');
-    return;
-  }
-  if (!req.body.topic) {
-    res.status(400).send('Topic is Required');
-    return;
-  }
-  if (!req.body.happeningOn) {
-    res.status(400).send('What Date will the Event Take Place');
-    return;
-  }
+  if (!req.body.location) { res.status(400).send('Location is Required'); return; }
+  if (!req.body.topic) { res.status(400).send('Topic is Required'); return; }
+  if (!req.body.happeningOn) { res.status(400).send('What Date will the Event Take Place'); return; }
+  if (!req.body.tags) { res.status(400).send('Tags is Required'); return; }
 
   const meetup = {
     id: meetups.length + 1,

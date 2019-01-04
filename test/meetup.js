@@ -112,6 +112,21 @@ describe('Meetups Api Exists', () => {
         });
     });
 
+    it('should fail when tags field is not filled', (done) => {
+      data = {
+        topic: 'Tech Connect',
+        location: 'Lagos',
+        happeningOn: '2019-01-20',
+      };
+      request(server)
+        .post('/api/v1/meetups')
+        .send(data)
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(400);
+          done();
+        });
+    });
+
     it('should fail when nothing is submitted', (done) => {
       data = {};
       request(server)
