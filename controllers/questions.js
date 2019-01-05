@@ -46,7 +46,7 @@ exports.upvote = (req, res) => {
 
 exports.downvote = (req, res) => {
   const Question = questions.find(q => q.id === Number(req.params.question_id));
-  if (!Question) res.status(404).send('No Question was not found');
+  if (!Question) res.status(404).send('No Question found');
 
   const question = {
     meetup: 1,
