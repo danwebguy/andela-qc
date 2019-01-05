@@ -10,3 +10,5 @@ or bottom of the log.
 
 ### GitHub Pages
 follow this link https://danwebguy.github.io/andela-qc/UI/ to go to the App on GitHub pages
+
+follow this link https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/ to access the endpoints on Heroku
