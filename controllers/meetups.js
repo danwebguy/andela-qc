@@ -8,7 +8,7 @@ exports.upcomingMeetups = (req, res) => {
   const upcoming = meetups.filter(
     result => result.happeningOn > new Date().toISOString().slice(0, 10),
   );
-  if (upcoming === undefined && upcoming.length === 0) {
+  if (upcoming.length === 0) {
     res.status(400).send({ message: 'No upcoming meetups' });
   } else {
     res.status(200).send({
