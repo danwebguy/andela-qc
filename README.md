@@ -15,4 +15,13 @@ follow this link https://danwebguy.github.io/andela-qc/UI/ to go to the App on G
 follow this link https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/ to access the endpoints on Heroku
 
 ### Endpoints
+Create a meetup record: https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/
+Create a question record: https://fathomless-sierra-95793.herokuapp.com/api/v1/questions/
+Get a specific meetup record: https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/1/
+Get all meetup records: https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/
+Upvote a question: https://fathomless-sierra-95793.herokuapp.com/api/v1/questions/1/upvote/
+Downvote a question: https://fathomless-sierra-95793.herokuapp.com/api/v1/questions/1/downvote/
+Rsvp for a meetup: https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/1/rsvps/
+Get all Upcoming meetup records: https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/upcoming/
+
 ![Endpoints](https://raw.githubusercontent.com/danwebguy/andela-qc/master/UI/img/endpoint.gif)
