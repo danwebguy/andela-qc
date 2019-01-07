@@ -24,4 +24,4 @@ Downvote a question: https://fathomless-sierra-95793.herokuapp.com/api/v1/questi
 Rsvp for a meetup: https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/1/rsvps/ <br>
 Get all Upcoming meetup records: https://fathomless-sierra-95793.herokuapp.com/api/v1/meetups/upcoming/ <br>
 
-![Endpoints](https://raw.githubusercontent.com/danwebguy/andela-qc/master/UI/img/endpoint.gif)
+![Endpoints](https://raw.githubusercontent.com/danwebguy/andela-qc/develop/UI/img/endpoint.gif)
