@@ -191,7 +191,7 @@ footer{
   margin: 0;
   padding: 0;
   background: 0;
-  background: url(../img/signinc.jpg);
+  background-color: #ffffff;
   font-family: sans-serif;
 }
 
@@ -275,7 +275,7 @@ footer{
   margin: 0;
   padding: 0;
   background: 0;
-  background: url(../img/signinb.jpg);
+  background-color: #ffffff;
   font-family: sans-serif;
 }
 

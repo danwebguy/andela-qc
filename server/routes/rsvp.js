@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const rsvpController = require('../controllers/rsvp');
+import rsvpController from '../controllers/rsvp';
 
 const router = express.Router();
 
@@ -9,4 +9,4 @@ const router = express.Router();
 // @access Public
 router.post('/:meetup_id/rsvps', rsvpController.createRsvp);
 
-module.exports = router;
+export default router;

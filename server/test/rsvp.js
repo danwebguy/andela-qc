@@ -1,6 +1,6 @@
-const request = require('supertest');
-const { expect } = require('chai');
-const server = require('../server');
+import request from 'supertest';
+import { expect } from 'chai';
+import server from '../../server';
 
 describe('RSVP Api Exists', () => {
   describe('POST /meetups/:meetup-id/rsvps', () => {

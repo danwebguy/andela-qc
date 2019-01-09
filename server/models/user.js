@@ -11,4 +11,4 @@ const users = [{
   isAdmin: 'true',
 }];
 
-module.exports = users;
+export default users;
