@@ -1,4 +1,4 @@
-const meetups = require('../models/meetup');
+import meetups from '../models/meetup';
 
 exports.getMeetups = (req, res) => {
   res.send(meetups);

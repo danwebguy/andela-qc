@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const meetupController = require('../controllers/meetups');
+import meetupController from '../controllers/meetups';
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.get('/:id', meetupController.getMeetupsById);
 
 router.post('/', meetupController.createMeetup);
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
 
@@ -7,4 +7,4 @@ const router = express.Router();
 // @access Public
 router.get('/test', (req, res) => res.json({ msq: 'Users Works' }));
 
-module.exports = router;
+export default router;

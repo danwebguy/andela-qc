@@ -1,5 +1,5 @@
-const rsvps = require('../models/rsvp');
-const meetups = require('../models/meetup');
+import rsvps from '../models/rsvp';
+import meetups from '../models/meetup';
 
 exports.createRsvp = (req, res) => {
   const meetup = meetups.find(m => m.id === Number(req.params.meetup_id));

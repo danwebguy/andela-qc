@@ -1,4 +1,4 @@
-const questions = require('../models/question');
+import questions from '../models/question';
 
 exports.createQuestion = (req, res) => {
   if (!req.body.title) {

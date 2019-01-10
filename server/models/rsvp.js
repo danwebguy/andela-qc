@@ -6,4 +6,4 @@ const rsvps = [
   },
 ];
 
-module.exports = rsvps;
+export default rsvps;

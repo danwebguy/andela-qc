@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const questionController = require('../controllers/questions');
+import questionController from '../controllers/questions';
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.patch('/:question_id/upvote', questionController.upvote);
 
 router.patch('/:question_id/downvote', questionController.downvote);
 
-module.exports = router;
+export default router;

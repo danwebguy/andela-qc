@@ -25,4 +25,4 @@ const meetups = [
   },
 ];
 
-module.exports = meetups;
+export default meetups;
