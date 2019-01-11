@@ -4,7 +4,7 @@ import questionController from '../controllers/questions';
 
 const router = express.Router();
 
-router.post('/', questionController.getQuestions);
+router.get('/', questionController.getQuestions);
 
 router.post('/', questionController.createQuestion);
 

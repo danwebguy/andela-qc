@@ -5,6 +5,17 @@ import server from '../../server';
 // Testing get all question endpoints
 
 describe('Question Api Exists', () => {
+
+  describe('GET /questions', () => {
+    it('should return status code 200 when successful', (done) => {
+      request(server)
+        .get('/api/v1/questions')
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
+    });
+  });
   describe('POST /questions', () => {
     let data;
     it('should return status code 201 when question is successfully sent', (done) => {
