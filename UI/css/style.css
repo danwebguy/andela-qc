@@ -2,7 +2,7 @@ body{
   font: 15px/1.5 Arial, Helvetica,sans-serif;
   padding:0;
   margin:0;
-  background-color:#f4f4f4;
+  background-color:#ffffff;
 }
 
 /* Global */
@@ -29,11 +29,10 @@ ul{
 /* Header **/
 
 header{
-  background:#0096db;
+  background:#4267b2;
   color:#ffffff;
   padding-top:10px;
   min-height:50px;
-  border-bottom:#003045 3px solid;
 }
 
 header a{
@@ -45,7 +44,7 @@ header a{
 
 header li{
   float:left;
-  display:inline;
+  display:grid;
   padding: 0 20px 0 20px;
 }
 
@@ -54,7 +53,7 @@ header #branding{
 }
 
 header #branding h1{
-  color: #003045;
+  color: #ffffff;
   margin:0;
 }
 
@@ -75,21 +74,24 @@ header a:hover{
 
 /* Showcase */
 #showcase{
-  min-height:400px;
-  background:url('../img/showcase1.jpg') no-repeat 0 -400px;
-  text-align:center;
-  color:#ffffff;
-  border-bottom:#003045 3px solid;
+  background: url(../img/showcase1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:400px; 
 }
 
 #showcase h1{
   margin-top:100px;
   font-size:55px;
   margin-bottom:10px;
+  color: #fff;
 }
 
 #showcase p{
   font-size:20px;
+  color: #fff;
 }
 
 
@@ -115,7 +117,7 @@ header a:hover{
   display: inline-block;
   padding: 8px;
   color: #ffffff;
-  background-color: #003045;
+  background-color: #4267b2;
   text-align: center;
   cursor: pointer;
   width: 100px;
@@ -132,6 +134,7 @@ aside#sidebar{
 aside#sidebar .quote input, aside#sidebar .quote textarea{
   width:90%;
   padding:5px;
+  resize: none;
 }
 
 /* Main-col */
@@ -142,6 +145,7 @@ article#main-col{
 
 article#main-col h1{
   font-size: 32px;
+  text-align: center;
 }
 
 /* user-dashboard */
@@ -150,19 +154,45 @@ ul#meetup li{
   padding:20px;
   border: #cccccc solid 1px;
   margin-bottom:5px;
-  background:#e6e6e6;
+  background:#fff;
 }
 
 #meetup button{
   border: none;
-  outline: 0;
-  display: inline-block;
   padding: 8px;
   color: #ffffff;
-  background-color: #003045;
+  background-color: #4267b2;
   text-align: center;
-  cursor: pointer;
-  width: 100%;
+  font-size: 18px;
+}
+
+/* Main-col */
+article#main-col1{
+  float:center;
+  width:100%;
+}
+
+article#main-col1 h1{
+  font-size: 32px;
+  text-align: center;
+}
+
+/* user-dashboard */
+ul#meetup1 li{
+  list-style: none;
+  padding:20px;
+  border: #cccccc solid 1px;
+  background:#fff;
+  display: flex;
+}
+
+#meetup1 button{
+  border: none;
+  outline: 0;
+  padding: 8px;
+  color: #ffffff;
+  background-color: #4267b2;
+  text-align: center;
   font-size: 18px;
 }
 
@@ -172,7 +202,7 @@ ul#meetup li{
   display: inline-block;
   padding: 8px;
   color: #ffffff;
-  background-color: #003045;
+  background-color: #4267b2;
   text-align: center;
   cursor: pointer;
   width: 30%;
@@ -183,7 +213,7 @@ footer{
   padding:20px;
   margin-top:20px;
   color:#ffffff;
-  background-color:#003045;
+  background-color:#4267b2;
   text-align: center;
 }
 /* Sign-in */
@@ -191,21 +221,19 @@ footer{
   margin: 0;
   padding: 0;
   background: 0;
-  background: url(../img/signinc.jpg);
+  background-color: #ffffff;
   font-family: sans-serif;
 }
 
 .loginbox{
-  width: 320px;
-  height: 420px;
+  height: 30em;
   background: #003045;
   color: #ffffff;
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
   box-sizing: border-box;
-  padding: 70px 30px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .avatar{
@@ -213,7 +241,7 @@ footer{
   height: 100px;
   border-radius: 50%;
   position: absolute;
-  top: -50px;
+  top: 5px;
   left: calc(50% - 50px);
 }
 
@@ -234,6 +262,7 @@ footer{
   width: 100%;
   margin-bottom: 20px;
 }
+
 
 .loginbox input[type="text"], input[type="password"]{
   border: none;
@@ -272,16 +301,18 @@ footer{
 
 /* Sign-up */
 #signup{
+  width: 100%;
   margin: 0;
   padding: 0;
   background: 0;
-  background: url(../img/signinb.jpg);
+  background-color: #ffffff;
   font-family: sans-serif;
+  display: flex;
 }
 
 .signupbox{
-  width: 320px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   background: #003045;
   color: #ffffff;
   top: 50%;
@@ -289,15 +320,15 @@ footer{
   position: absolute;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
-  padding: 70px 20px;
+  padding: 20px 20px;
 }
 
 .avatar{
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  position: absolute;
-  top: -50px;
+  position: relative;
+  top: 0px;
   left: calc(50% - 50px);
 }
 
@@ -384,7 +415,7 @@ footer{
   display: inline-block;
   padding: 8px;
   color: #ffffff;
-  background-color: #003045;
+  background-color: #4267b2;
   text-align: center;
   cursor: pointer;
   width: 100%;
@@ -403,17 +434,16 @@ footer{
   opacity: 0.7;
 }
 
-.thumb{
-  width: 3%;
-}
+
 /* Comments */
 
 ul#comment li{
   list-style: none;
-  padding:20px;
-  border: #cccccc solid 1px;
-  margin-bottom:5px;
-  background:#e6e6e6;
+  background:#fff;
+  padding: 10px;
+}
+#comment p{
+  max-width: 500px;
 }
 
 #comment button, input[type="submit"]{
@@ -422,7 +452,7 @@ ul#comment li{
   display: inline-block;
   padding: 8px;
   color: #ffffff;
-  background-color: #003045;
+  background-color: #4267b2;
   text-align: center;
   cursor: pointer;
   width: 100px;
@@ -430,35 +460,35 @@ ul#comment li{
 }
 
 #comment .thumb{
-  width: 4%;
+  width: 10px;
+  height: 10px;
 }
 
 #comment .img{
   float: left;
   padding: 10px;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  position: relative;
-  top: -40px;
 }
 
 #comment textarea{
-  width:100%;
-  padding:5px;
+  width: 65%;
+  resize: none;
+  padding: 5px;
+  height: 100px;
 }
 
 #adminform  input[type="text"]{
   width:65%;
   padding:10px;
   height: 10px;
-
 }
 
 #adminform textarea{
-  cols: 30px;
+  resize: none;
   width:65%;
-  rows: 10px;
+  height: 100px;
 }
 
 /* Media Queries */
@@ -468,10 +498,20 @@ ul#comment li{
   header nav li,
   #boxes .box,
   article#main-col,
+  article#main-col1,
   aside#sidebar{
     float:none;
     text-align:center;
     width:100%;
+  }
+  ul#meetup1 li
+  {
+    flex-direction: column;
+  }
+  ul#comment li,
+  #comment p,
+  {
+    flex-direction: column;
   }
 
   header{
@@ -481,5 +521,43 @@ ul#comment li{
   #showcase h1{
     margin-top:40px;
   }
+}
 
+.buttons{
+  display: flex;
+  }
+  .button{
+    background-color: #4267b2;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    text-align: center;
+    flex: 0.5;
+  }
+  
+  @media (min-width: 400px) {
+  .entry {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .entry-thumb {
+    width: 100px;
+    flex: none;
+    margin-right: 15px;
+  }
+
+  .entry-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .entry-meta {
+    margin-left: auto;
+  }
+}
+
+img {
+  max-width: 100%;
 }

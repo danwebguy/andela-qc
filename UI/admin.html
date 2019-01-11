@@ -18,10 +18,9 @@
       </div>
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li class="current"><a href="admin.html">Admin</a></li>
-          <li><a href="index.html">Logout</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="index.html">Logout</a></li>
         </ul>
       </nav>
     </div>
@@ -29,6 +28,15 @@
 
   <section id="main">
     <div class="container">
+        <aside id="sidebar">
+            <div class="card">
+                <img src="img/admin.png" alt="Admin" class="img">
+                <h1>Administrator</h1>
+                <p class="title">No. of Meetups Created: 1</p>
+                <p> <a href="create_meetup.html"> <button>Create a Meetup</button> </a> </p>
+              </div>
+          </aside>
+      
       <article id="main-col">
         <h1 class="page-title">Admin Dashboard</h1>
         <h2>Upcoming Meetups</h2>
@@ -40,18 +48,22 @@
             <a href="#"><button>Delete</button></a>
            <a href="meetups.html"><button>View Details</button></a>
           </li>
+          <li>
+              <h3>Lagos Weight Loss and Wellness Support Group</h3>
+              <p>Saturday, December 22, 2018</p>
+              <a href="update_meetup.html"><button>Update</button></a>
+              <a href="#"><button>Delete</button></a>
+             <a href="meetups.html"><button>View Details</button></a>
+            </li>
+            <li>
+                <h3>Lagos Weight Loss and Wellness Support Group</h3>
+                <p>Saturday, December 22, 2018</p>
+                <a href="update_meetup.html"><button>Update</button></a>
+                <a href="#"><button>Delete</button></a>
+               <a href="meetups.html"><button>View Details</button></a>
+              </li>
         </ul>
     </article>
-
-    <aside id="sidebar">
-      <div class="card">
-          <img src="img/admin.png" alt="Admin" class="img">
-          <h1>Administrator</h1>
-          <p class="title">No. of Meetups Created: 1</p>
-          <p> <a href="create_meetup.html"> <button>Create a Meetup</button> </a> </p>
-        </div>
-    </aside>
-
     </div>
   </section>
     
