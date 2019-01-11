@@ -4,9 +4,7 @@ import questionController from '../controllers/questions';
 
 const router = express.Router();
 
-// @route Get api/v1/meetups/test
-// @desc Test post route
-// @access Public
+router.get('/', questionController.getQuestions);
 
 router.post('/', questionController.createQuestion);
 
