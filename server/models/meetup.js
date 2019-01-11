@@ -17,10 +17,10 @@ const meetups = [
   },
   {
     id: 3,
-    createdOn: '2019-01-04',
+    createdOn: '2019-1-04',
     location: "Danny's Meetup",
     topic: "Dan's Meetup",
-    happeningOn: '2019-01-10',
+    happeningOn: '2019-11-10',
     tags: ['Africa', 'Nigeria'],
   },
 ];

@@ -1,5 +1,9 @@
 import questions from '../models/question';
 
+exports.getQuestions = (req, res) => {
+  res.send(questions);
+};
+
 exports.createQuestion = (req, res) => {
   if (!req.body.title) {
     res.status(400).send('title is Required');

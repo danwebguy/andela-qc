@@ -18,10 +18,12 @@
       </div>
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li class="current"><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="admin.html">Admin</a></li>
-          <li><a href="index.html">Logout</a></li>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="current"><a href="meetup.html" class="button button-01">Meet up</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
         </ul>
       </nav>
     </div>
@@ -29,14 +31,25 @@
 
   <section id="main">
     <div class="container">
+
+        <aside id="sidebar">
+            <div class="card">
+              <h1>Infomation on meetup</h1>
+                <p>Saturday, December 22, 2018<br>8:00 AM to 9:30 AM</p>
+                <p class="title"> 9 Africa Lane Off Admiralty Road Lekki 1 · Lagos</p>
+                <p><button>Attend Event</button></p>
+              </div>
+          </aside>
+
       <article id="main-col">
         <h1 class="page-title">Post a Comment</h1>
         <h2>Lagos Weight Loss and Wellness Support Group</h2>
         
         <ul id="comment">
-            <a href="meetups.html"> <button>Go Back</button> </a>
+            <a href="meetups.html"> <img src="img/back.png" alt=""> </a>
           <li>
-              <p><img src="img/avatar.png" class="img"> James's Question: <br> I am so big, how can I loose weight?</p>
+              <img src="img/avatar.png" class="img">
+              <p> James's Question: <br> I am so big, how can I loose weight?</p>
           </li>
           <li>
             <form>
@@ -45,18 +58,12 @@
               <input type="submit" value="Submit">
             </form>
           </li>
-            <li><p><img src="img/avatar.png" class="img"> Adeola's Comment: <br> Its Good</p></li>
+            <li>
+                <img src="img/avatar.png" class="img"> 
+                <p>Adeola's Comment: Its Good to serve the Lord with all ur heart </p>
+            </li>
         </ul>
-    </article>
-
-    <aside id="sidebar">
-      <div class="card">
-        <h1>Infomation on meetup</h1>
-          <p>Saturday, December 22, 2018<br>8:00 AM to 9:30 AM</p>
-          <p class="title"> 9 Africa Lane Off Admiralty Road Lekki 1 · Lagos</p>
-        </div>
-    </aside>
-
+      </article>
     </div>
   </section>
     
