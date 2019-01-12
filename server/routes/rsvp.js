@@ -1,13 +1,11 @@
 import express from 'express';
 
-import {
-  createRsvp, getRsvp,
-} from '../controllers/rsvp';
+import rsvpController from '../controllers/rsvp';
 
 const router = express.Router();
 
-router.get('/:meetup_id/rsvps', getRsvp);
+router.get('/:meetup_id/rsvps', rsvpController.getRsvp);
 
-router.post('/:meetup_id/rsvps', createRsvp);
+router.post('/:meetup_id/rsvps', rsvpController.createRsvp);
 
 export default router;
