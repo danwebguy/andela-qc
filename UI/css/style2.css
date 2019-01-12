@@ -1,4 +1,5 @@
 html,body{
+  font: 15px/1.5 Arial, Helvetica,sans-serif;
   height: 100%;
 }
 .login-flex-container{
@@ -78,7 +79,7 @@ html,body{
   text-decoration: none;
   font-size: 14px;
   line-height: 20px;
-  color: #cccccc;
+  color: #0096db;
 }
 
 .login-form a:hover{

@@ -1,26 +1,29 @@
 import rsvps from '../models/rsvp';
 import meetups from '../models/meetup';
+import validateRsvpInput from '../helpers/rsvp';
 
-exports.createRsvp = (req, res) => {
-  const meetup = meetups.find(m => m.id === Number(req.params.meetup_id));
+export const getRsvp = (req, res) => {
+  res.status(200).send({
+    status: 200,
+    data: [rsvps],
+  });
+};
 
-  if (!meetup) res.status(404).send('No Meetup was not found');
-  else {
-    if (!req.body.status) {
-      res.status(400).send('Will you attend the meetup');
-      return;
-    }
-
-    const rsvp = {
-      meetup_id: meetup.id,
-      topic: meetup.topic,
-      user: 1,
-      status: req.body.status,
-    };
-    rsvps.push(rsvp);
-    res.status(201).send({
-      status: 201,
-      data: [rsvp],
-    });
+export const createRsvp = (req, res) => {
+  const { errors, isValid } = validateRsvpInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
+  const meetup = meetups.find(meetupid => meetupid.id === Number(req.params.meetup_id));
+  const rsvp = {
+    meetup: meetup.id,
+    topic: meetup.topic,
+    user: 1,
+    status: req.body.status,
+  };
+  rsvps.push(rsvp);
+  return res.status(201).send({
+    status: 201,
+    data: [rsvp],
+  });
 };

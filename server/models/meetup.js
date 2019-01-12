@@ -4,7 +4,8 @@ const meetups = [
     createdOn: '2019-01-04',
     location: "Mary's Meetup",
     topic: "Dan's Meetup",
-    happeningOn: '2019-01-01',
+    happeningOn: '2020-01-01',
+    images: '././images',
     tags: ['Africa', 'Nigeria'],
   },
   {
@@ -13,6 +14,7 @@ const meetups = [
     location: "John's Meetup",
     topic: "Dan's Meetup",
     happeningOn: '2019-01-02',
+    images: '././images',
     tags: ['Africa', 'Nigeria'],
   },
   {
@@ -21,6 +23,7 @@ const meetups = [
     location: "Danny's Meetup",
     topic: "Dan's Meetup",
     happeningOn: '2019-11-10',
+    images: '././images',
     tags: ['Africa', 'Nigeria'],
   },
 ];

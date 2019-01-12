@@ -1,15 +1,17 @@
 import express from 'express';
 
-import questionController from '../controllers/questions';
+import {
+  getQuestions, createQuestion, upvote, downvote,
+} from '../controllers/questions';
 
 const router = express.Router();
 
-router.get('/', questionController.getQuestions);
+router.get('/', getQuestions);
 
-router.post('/', questionController.createQuestion);
+router.post('/', createQuestion);
 
-router.patch('/:question_id/upvote', questionController.upvote);
+router.patch('/:question_id/upvote', upvote);
 
-router.patch('/:question_id/downvote', questionController.downvote);
+router.patch('/:question_id/downvote', downvote);
 
 export default router;

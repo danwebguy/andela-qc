@@ -1,18 +1,17 @@
 import express from 'express';
 
-import meetupController from '../controllers/meetups';
+import {
+  getMeetups, upcomingMeetups, getMeetupsById, createMeetup,
+} from '../controllers/meetups';
 
 const router = express.Router();
 
-// @route Get api/v1/meetups/test
-// @desc Test post route
-// @access Public
-router.get('/', meetupController.getMeetups);
+router.get('/', getMeetups);
 
-router.get('/upcoming', meetupController.upcomingMeetups);
+router.get('/upcoming', upcomingMeetups);
 
-router.get('/:id', meetupController.getMeetupsById);
+router.get('/:id', getMeetupsById);
 
-router.post('/', meetupController.createMeetup);
+router.post('/', createMeetup);
 
 export default router;
