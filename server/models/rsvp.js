@@ -1,6 +1,6 @@
 const rsvps = [
   {
-    meetup_id: 1,
+    meetup: 1,
     topic: 'Dans Meetup',
     status: 'Yes',
   },

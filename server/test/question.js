@@ -5,7 +5,6 @@ import server from '../../server';
 // Testing get all question endpoints
 
 describe('Question Api Exists', () => {
-
   describe('GET /questions', () => {
     it('should return status code 200 when successful', (done) => {
       request(server)

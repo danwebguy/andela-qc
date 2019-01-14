@@ -31,7 +31,7 @@ describe('RSVP Api Exists', () => {
         .post('/api/v1/meetups/invalidId/rsvps')
         .send(payload)
         .end((err, res) => {
-          expect(res.statusCode).to.equal(404);
+          expect(res.statusCode).to.equal(400);
           done();
         });
     });

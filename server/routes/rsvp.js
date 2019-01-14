@@ -4,9 +4,8 @@ import rsvpController from '../controllers/rsvp';
 
 const router = express.Router();
 
-// @route Get api/v1/rsvp/test
-// @desc Test post route
-// @access Public
+router.get('/:meetup_id/rsvps', rsvpController.getRsvp);
+
 router.post('/:meetup_id/rsvps', rsvpController.createRsvp);
 
 export default router;
