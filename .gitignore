@@ -1,5 +1,6 @@
 .vscode/
 dist/
+queries/
 node_modules/
 coverage
 .coveralls.yml
