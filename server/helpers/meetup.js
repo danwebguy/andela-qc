@@ -18,7 +18,7 @@ const validateMeetupInput = (data) => {
     errors.location = 'location is required';
   }
 
-  if (!Validator.isLength(data.topic, { min: 6, max: 30 })) {
+  if (!Validator.isLength(data.topic, { min: 6, max: 100 })) {
     errors.topic = 'topic must be between 2 and 30 characters';
   }
 
@@ -32,10 +32,6 @@ const validateMeetupInput = (data) => {
 
   if (Validator.isEmpty(data.happeningOn)) {
     errors.happeningOn = 'happeningOn field is required';
-  }
-
-  if (Validator.isEmpty(data.tags)) {
-    errors.tags = 'tags field is required (hint: [book, man])';
   }
 
   return {

@@ -1,66 +1,48 @@
-import questions from '../models/question';
+import db from '../models/db';
 import validateQuestionInput from '../helpers/question';
 
 class questionsController {
-  static getQuestions(req, res) {
-    res.status(200).send({
-      status: 200,
-      data: [questions],
-    });
+  static async getQuestions(req, res) {
+    const findAllQuestions = 'SELECT * FROM questions ORDER by id ASC';
+    try {
+      const { rows, rowCount } = await db.query(findAllQuestions);
+      return res.status(200).send({ rows, rowCount });
+    } catch (error) {
+      return res.status(400).send({ message: 'No Questions found' });
+    }
   }
 
-  static createQuestion(req, res) {
+  static async createQuestion(req, res) {
     const { errors, isValid } = validateQuestionInput(req.body);
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    const { title, body } = req.body;
-    const question = {
-      id: questions.length + 1,
-      createdOn: new Date().toISOString().slice(0, 10),
-      createdBy: 1,
-      meetup: 1,
-      title,
-      body,
-      votes: 0,
-    };
-    questions.push(question);
-    return res.status(201).send({
-      status: 201,
-      data: [question],
-    });
-  }
-
-  static upvote(req, res) {
-    const Question = questions.find(q => q.id === Number(req.params.question_id));
-    if (!Question) res.status(404).send('No Question was not found');
-    const question = {
-      meetup: 1,
-      title: Question.title,
-      body: Question.body,
-      votes: Question.votes += 1,
-    };
-    questions.push(question);
-    res.status(200).send({
-      status: 200,
-      data: [question],
-    });
-  }
-
-  static downvote(req, res) {
-    const Question = questions.find(q => q.id === Number(req.params.question_id));
-    if (!Question) res.status(404).send('No Question found');
-    const question = {
-      meetup: 1,
-      title: Question.title,
-      body: Question.body,
-      votes: Question.votes -= 1,
-    };
-    questions.push(question);
-    res.status(200).send({
-      status: 200,
-      data: [question],
-    });
+    const meetupId = 'SELECT * FROM meetup WHERE id = $1';
+    const questions = `INSERT INTO
+      questions(createdby, meetup, title, body)
+      VALUES($1, $2, $3, $4)
+      returning *`;
+    try {
+      const { rows } = await db.query(meetupId, [req.params.meetupid]);
+      if (!rows[0]) {
+        return res.status(404).json({ message: 'Meetup not found' });
+      }
+      const values = [
+        req.user.userid,
+        req.params.meetupid,
+        req.body.title,
+        req.body.body,
+      ];
+      const response = await db.query(questions, values);
+      return res.status(200).json({
+        status: 200,
+        data: [
+          response.rows[0],
+        ],
+      });
+    } catch (err) {
+      return res.status(400).json(err);
+    }
   }
 }
 export default questionsController;

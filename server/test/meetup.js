@@ -1,8 +1,26 @@
+// Testing get all meetup endpoints
 import request from 'supertest';
 import { expect } from 'chai';
 import server from '../../server';
+import auth from '../helpers/auth';
 
-// Testing get all meetup endpoints
+const userCredentials = {
+  "email": "danielufeli@yahoo.com",
+  "password": "$2a$10$3SYL/3C6r8qpA14BLgmj9.ZsPkYhMAd.5nvqGCVWh3RKsqVta8/Dm"
+};
+// now let's login the user before we run any tests
+const authenticatedUser = request.agent(server);
+before((done) => {
+  authenticatedUser
+    .post('/api/v1/auth/login')
+    .send(userCredentials)
+    .set('x-auth-token', auth.verifyToken)
+    .end((err, response) => {
+      expect(response.statusCode).to.equal(200);
+      expect('Location', '/');
+      done();
+    });
+});
 
 describe('Meetups Api Exists', () => {
   describe('GET /meetups', () => {
@@ -30,7 +48,7 @@ describe('Meetups Api Exists', () => {
   describe('GET /meetups/:id', () => {
     it('should return status code 200 when id is valid', (done) => {
       request(server)
-        .get('/api/v1/meetups/1')
+        .get('/api/v1/meetups/25')
         .end((err, res) => {
           expect(res.statusCode).to.equal(200);
           done();
@@ -39,7 +57,7 @@ describe('Meetups Api Exists', () => {
 
     it('should return status code 404 when id is invalid', (done) => {
       request(server)
-        .get('/api/v1/meetups/none')
+        .get('/api/v1/meetups/0')
         .end((err, res) => {
           expect(res.statusCode).to.equal(404);
           done();
@@ -58,8 +76,7 @@ describe('Meetups Api Exists', () => {
         happeningOn: '2019-01-20',
         tags: 'Developers',
       };
-      request(server)
-        .post('/api/v1/meetups')
+      authenticatedUser.post('/api/v1/meetups')
         .send(data)
         .end((err, res) => {
           expect(res.statusCode).to.equal(201);
@@ -73,8 +90,7 @@ describe('Meetups Api Exists', () => {
         happeningOn: '2019-01-20',
         tags: 'Developers',
       };
-      request(server)
-        .post('/api/v1/meetups')
+      authenticatedUser.post('/api/v1/meetups')
         .send(data)
         .end((err, res) => {
           expect(res.statusCode).to.equal(400);
@@ -89,7 +105,7 @@ describe('Meetups Api Exists', () => {
         tags: 'Developers',
       };
       request(server)
-        .post('/api/v1/meetups')
+      authenticatedUser.post('/api/v1/meetups')
         .send(data)
         .end((err, res) => {
           expect(res.statusCode).to.equal(400);
@@ -103,34 +119,16 @@ describe('Meetups Api Exists', () => {
         location: 'Lagos',
         tags: 'Developers',
       };
-      request(server)
-        .post('/api/v1/meetups')
+      authenticatedUser.post('/api/v1/meetups')
         .send(data)
         .end((err, res) => {
           expect(res.statusCode).to.equal(400);
           done();
         });
     });
-
-    it('should fail when tags field is not filled', (done) => {
-      data = {
-        topic: 'Tech Connect',
-        location: 'Lagos',
-        happeningOn: '2019-01-20',
-      };
-      request(server)
-        .post('/api/v1/meetups')
-        .send(data)
-        .end((err, res) => {
-          expect(res.statusCode).to.equal(400);
-          done();
-        });
-    });
-
     it('should fail when nothing is submitted', (done) => {
       data = {};
-      request(server)
-        .post('/api/v1/meetups')
+      authenticatedUser.post('/api/v1/meetups')
         .send(data)
         .end((err, res) => {
           expect(res.statusCode).to.equal(400);

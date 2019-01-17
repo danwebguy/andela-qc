@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+.wrapper {
+  min-height: 100%;
+}
 body{
   font: 15px/1.5 Arial, Helvetica,sans-serif;
   padding:0;
@@ -13,6 +16,7 @@ body{
   width:80%;
   margin:auto;
   overflow:hidden;
+  bottom: 0;
 }
 
 ul{
@@ -221,12 +225,13 @@ ul#meetup1 li{
 }
 
 footer{
-  padding:20px;
-  margin-top:20px;
   color:#ffffff;
-  background-color:#4267b2;
+  background-color:#474849;
   text-align: center;
+  position: relative;
+  bottom: 0;
 }
+
 /* Sign-in */
 #signin{
   margin: 0;
