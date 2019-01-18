@@ -1,4 +1,4 @@
-const dbSchema = `
+ 
   DROP TABLE IF EXISTS meetup CASCADE;
   CREATE TABLE meetup (
     id SERIAL PRIMARY KEY,
@@ -55,5 +55,3 @@ const dbSchema = `
           INSERT INTO meetup(
             location, happeningon, topic, images)
             VALUES ('Lagos', '2019-02-02', 'Welfare', '{"Welfare1"}');
-`;
-export default dbSchema;
