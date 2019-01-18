@@ -5,6 +5,7 @@
   "main": "server.js",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
+    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
     "babel-cli": "^6.26.0",
@@ -26,7 +27,6 @@
   "dependencies": {
     "@babel/core": "^7.2.2",
     "airbnb-browser-shims": "^3.1.0",
-    "@babel/node": "^7.2.2",
     "babel-istanbul": "^0.12.2",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
@@ -50,18 +50,14 @@
     "validator": "^10.10.0"
   },
   "scripts": {
-    "postinstall": "npm run build:prod",
+    "build": "nyc mocha --exit --compilers js:babel-core/register server/test/**/*.js",
     "start": "babel-node server.js",
-    "clean:dist": "rimraf dist",
-    "build:prod": "npm run clean:dist && npm run prod-migrate && babel server.js --out-dir dist",
-    "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node server.js",
-    "prod-migrate": "npm run migrate --env production",
-    "test": "./node_modules/.bin/cross-env NODE_ENV=test && nyc mocha --timeout 15000 server/test/**/*.js --exit --compilers @babel/register ./server/test/**/*.js",
-    "pretest": "eslint --ignore-path .gitignore .",
+    "test": "npm run migrate && nyc mocha --exit --compilers js:babel-core/register server/test/**/*.js",
     "lint": "eslint --ignore-path .gitignore .",
     "coverage": "nyc --reporter=lcov --reporter=text-lcov --require babel-core/register  _mocha --exit ../test/*.js",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "codeclimate-report": "codeclimate-test-reporter < ./coverage/lcov.info",
+    "start:dev": "babel-node server.js",
     "migrate": "babel-node server/models/db.js"
   },
   "engines": {
