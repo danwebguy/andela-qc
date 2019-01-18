@@ -5,6 +5,8 @@ import questions from './questions';
 import rsvp from './rsvp';
 import meetups from './meetups';
 
+const router = express.Router();
+
 export default (app) => {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());

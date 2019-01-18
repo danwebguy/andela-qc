@@ -7,6 +7,7 @@ import routes from './server/routes/routes';
 const app = express();
 
 routes(app);
+app.use('/', routes);
 app.use(helmet());
 app.use(compression());
 
