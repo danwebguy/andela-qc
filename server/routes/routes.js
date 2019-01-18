@@ -5,7 +5,7 @@ import questions from './questions';
 import rsvp from './rsvp';
 import meetups from './meetups';
 
-const routes = (app) => {
+export default (app) => {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use('/api/v1/users', users);
@@ -14,5 +14,3 @@ const routes = (app) => {
   app.use('/api/v1/questions', questions);
   app.use('/api/v1/meetups', rsvp);
 };
-
-export default routes;
