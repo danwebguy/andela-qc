@@ -12,9 +12,6 @@ class questionsController {
     }
   }
 
-  static async createQuestion(req, res) {
-    const { errors, isValid } = validateQuestionInput(req.body);
-    if (!isValid) {
       return res.status(400).json(errors);
     }
     const meetupId = 'SELECT * FROM meetup WHERE id = $1';
