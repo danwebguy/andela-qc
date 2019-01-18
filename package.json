@@ -51,7 +51,7 @@
   },
   "scripts": {
     "build": "nyc mocha --exit --compilers js:babel-core/register server/test/**/*.js",
-    "start": "node dist/server.js",
+    "start": "babel-node server.js",
     "test": "npm run migrate && nyc mocha --exit --compilers js:babel-core/register server/test/**/*.js",
     "lint": "eslint --ignore-path .gitignore .",
     "coverage": "nyc --reporter=lcov --reporter=text-lcov --require babel-core/register  _mocha --exit ../test/*.js",
