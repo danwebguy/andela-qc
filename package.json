@@ -52,7 +52,7 @@
   "scripts": {
     "postinstall": "npm run build:prod",
     "start": "node dist/server.js",
-    "clean:dist": "rimraf ./dist",
+    "clean:dist": "rimraf dist",
     "build:prod": "npm run clean:dist && npm run prod-migrate && babel server.js --out-dir dist",
     "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node server.js",
     "prod-migrate": "npm run migrate --env production",
