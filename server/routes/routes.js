@@ -8,6 +8,7 @@ import meetups from './meetups';
 const routes = (app) => {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
+  app.use('/', routes);
   app.use('/api/v1/users', users);
   app.use('/api/v1/auth', users);
   app.use('/api/v1/meetups', meetups);
