@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.get('/', questionsController.getQuestions);
 
-router.post('/', auth.verifyToken, questionsController.createQuestion);
+router.post('/:id', auth.verifyToken, questionsController.createQuestion);
+
+router.patch('/:id/upvote', auth.verifyToken, questionsController.upvoteQuestion);
 
 export default router;

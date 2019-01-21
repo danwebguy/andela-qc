@@ -7,7 +7,12 @@ class meetupController {
     const findAllMeetups = 'SELECT * FROM meetup ORDER BY happeningOn ASC';
     try {
       const { rows, rowCount } = await db.query(findAllMeetups);
-      return res.status(200).json({ rows, rowCount });
+      return res.status(200).json({
+        status: 200,
+        data: [
+          { rows, rowCount },
+        ],
+      });
     } catch (error) {
       return res.status(400).json({ message: 'No meetup found' });
     }
@@ -17,7 +22,12 @@ class meetupController {
     const upcoming = 'SELECT * FROM meetup WHERE happeningOn > CURRENT_DATE ORDER BY happeningOn ASC';
     try {
       const { rows, rowCount } = await db.query(upcoming);
-      return res.status(200).json({ rows, rowCount });
+      return res.status(200).json({
+        status: 200,
+        data: [
+          { rows, rowCount },
+        ],
+      });
     } catch (error) {
       return res.status(400).json({ message: 'No upcoming meetup found' });
     }

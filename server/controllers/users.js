@@ -41,11 +41,13 @@ class userController {
     try {
       const { rows } = await db.query(User, values);
       const token = authtok.generateToken(rows[0].id, rows[0].isadmin);
-      return res.status(201).json({
-        status: 201,
+      const result = Object.assign({}, rows[0]);
+      delete result.password;
+      return res.status(200).json({
+        status: 200,
         data: [
           token,
-          rows[0], delete rows[0].password,
+          result,
         ],
       });
     } catch (error) {
@@ -71,11 +73,13 @@ class userController {
         return res.status(400).json({ message: 'Your email or password is incorrect' });
       }
       const token = authtok.generateToken(rows[0].id, rows[0].isadmin);
+      const result = Object.assign({}, rows[0]);
+      delete result.password;
       return res.status(200).json({
         status: 200,
         data: [
           token,
-          rows[0], delete rows[0].password,
+          result,
         ],
       });
     } catch (error) {

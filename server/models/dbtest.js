@@ -30,6 +30,7 @@ const dbSchema = `
     meetup INTEGER NOT NULL, 
     title VARCHAR(255) NOT NULL,
     body VARCHAR(255) NOT NULL,
+    users TEXT [],
     votes INTEGER
   );
   DROP TABLE IF EXISTS comments CASCADE;

@@ -57,7 +57,7 @@
     "coverage": "nyc --reporter=lcov --reporter=text-lcov --require babel-core/register  _mocha --exit ../test/*.js",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "codeclimate-report": "codeclimate-test-reporter < ./coverage/lcov.info",
-    "start:dev": "babel-node server.js",
+    "start:dev": "babel-node nodemon server.js",
     "migrate": "babel-node server/models/db.js"
   },
   "engines": {
