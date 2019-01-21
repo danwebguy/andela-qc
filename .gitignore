@@ -1,7 +1,6 @@
 .env
 .vscode/
 dist/
-backup/
 queries/
 node_modules/
 coverage
