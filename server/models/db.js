@@ -21,5 +21,4 @@ export default {
     });
   },
 };
-
 pool.query(dbtest);
