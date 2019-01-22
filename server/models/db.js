@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+import dbtest from './dbtest';
 
 dotenv.config();
 
@@ -8,9 +9,9 @@ const pool = new Pool({
 });
 
 export default {
-  query(text, params) {
+  query(str, params) {
     return new Promise((resolve, reject) => {
-      pool.query(text, params)
+      pool.query(str, params)
         .then((res) => {
           resolve(res);
         })
@@ -20,3 +21,4 @@ export default {
     });
   },
 };
+pool.query(dbtest);
