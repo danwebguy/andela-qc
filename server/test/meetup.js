@@ -1,4 +1,3 @@
-// Testing get all meetup endpoints
 import request from 'supertest';
 import { expect } from 'chai';
 import jwt from 'jsonwebtoken';
@@ -123,7 +122,7 @@ describe('Meetups', () => {
   });
 
   describe.skip('POST /meetups', () => {
-    xit('should return status code 400 when no token is passed', (done) => {
+    it('should return status code 400 when no token is passed', (done) => {
       request(server)
         .post('/api/v1/meetups')
         .send(params)
@@ -136,7 +135,7 @@ describe('Meetups', () => {
         });
     });
 
-    xit('should return status code 400 when invalid token is passed', (done) => {
+    it('should return status code 400 when invalid token is passed', (done) => {
       request(server)
         .post('/api/v1/meetups')
         .set('x-auth-token', wrongtoken)
@@ -150,13 +149,12 @@ describe('Meetups', () => {
         });
     });
 
-    xit('should return status code 409 on when meetup exists', (done) => {
+    it('should return status code 409 on when meetup exists', (done) => {
       request(server)
         .post('/api/v1/meetups')
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          console.log(res.body);
           expect(res.status).to.equal(409);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
@@ -165,7 +163,7 @@ describe('Meetups', () => {
         });
     });
 
-    xit('should fail on POST with incomplete payload (tags)', (done) => {
+    it('should fail on POST with incomplete payload (tags)', (done) => {
       params = {
         topic: 'Progress Party',
         location: 'lagos',
@@ -176,7 +174,6 @@ describe('Meetups', () => {
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          // console.log(res.body);
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
@@ -196,7 +193,6 @@ describe('Meetups', () => {
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          // console.log(res.body);
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
@@ -216,8 +212,6 @@ describe('Meetups', () => {
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          console.log(res.body);
-          // expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
           expect(res.body.error).to.equal('date is required');
@@ -232,7 +226,6 @@ describe('Meetups', () => {
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          // console.log(res.body);
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
@@ -253,7 +246,6 @@ describe('Meetups', () => {
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          // console.log(res.body);
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
@@ -274,7 +266,6 @@ describe('Meetups', () => {
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          // console.log(res.body, 'c');
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
@@ -295,7 +286,6 @@ describe('Meetups', () => {
         .set('x-auth-token', token)
         .send(params)
         .end((err, res) => {
-          // console.log(res.body, 'b');
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.all.keys('status', 'error');
