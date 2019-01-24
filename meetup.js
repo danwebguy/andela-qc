@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { expect } from 'chai';
-import server from '../../server';
+import server from './server';
 
 // Testing get all meetup endpoints
 
