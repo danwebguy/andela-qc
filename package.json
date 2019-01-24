@@ -44,6 +44,7 @@
     "multer": "^1.4.1",
     "pg": "^7.8.0",
     "request": "^2.88.0",
+    "should": "^13.2.3",
     "superagent": "^4.1.0",
     "supertest": "^3.3.0",
     "uuid": "^3.3.2",
@@ -52,8 +53,7 @@
   "scripts": {
     "build": "nyc mocha --exit --compilers js:babel-core/register server/test/**/*.js",
     "start": "babel-node server.js",
-    "test": "nyc jasmine --random=false",
-    "test-init": "jasmine init",
+    "test": "nyc mocha --exit --compilers js:babel-core/register server/test/**/*.js",
     "lint": "eslint --ignore-path .gitignore .",
     "coverage": "nyc --reporter=lcov --reporter=text-lcov --require babel-core/register  _mocha --exit ../test/*.js",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",

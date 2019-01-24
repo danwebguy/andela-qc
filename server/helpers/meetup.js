@@ -11,11 +11,11 @@ const validateMeetupInput = (data) => {
   data.tags = !isEmpty(data.tags) ? data.tags : '';
 
   if (!Validator.isLength(data.location, { min: 2, max: 30 })) {
-    errors.location = 'location is required';
+    errors.location = 'location field is required';
   }
 
   if (Validator.isEmpty(data.location)) {
-    errors.location = 'location is required';
+    errors.location = 'location field is required';
   }
 
   if (!Validator.isLength(data.topic, { min: 6, max: 100 })) {
