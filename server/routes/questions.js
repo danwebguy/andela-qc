@@ -11,4 +11,6 @@ router.post('/:id', auth.verifyToken, questionsController.createQuestion);
 
 router.patch('/:id/upvote', auth.verifyToken, questionsController.upvoteQuestion);
 
+router.patch('/:id/downvote', auth.verifyToken, questionsController.downvoteQuestion);
+
 export default router;

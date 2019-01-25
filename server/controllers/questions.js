@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import db from '../models/db';
 import validateQuestionInput from '../helpers/question';
 
@@ -53,17 +54,48 @@ class questionsController {
       if (!rows[0]) {
         return res.status(404).json({ message: 'Question not found' });
       }
-      const upvoters = rows[0].users;
-      if (upvoters === 0 || upvoters.map(upvote => upvote.user === req.user.id).lenght > 0) {
+      const upvotedUser = rows[0].users;
+      if (_.has(upvotedUser, req.user.id, true)) {
         return res.status(400).json({ alreadyupvoted: 'User already upvoted this question' });
       }
-      const updateAQuestion = `INSERT INTO
-      questions(users, votes)
-      VALUES(array[ $1 ], $2)
-      returning *`;
+      const updateAQuestion = `UPDATE questions
+      SET users=array[ $1 ],votes= $2
+      WHERE id=$3 returning *`;
       const values = [
-        upvoters,
-        rows[0].votes += 1,
+        req.user.id || rows[0].users,
+        rows[0].votes += 1 || rows[0].votes,
+        req.params.id,
+      ];
+      const response = await db.query(updateAQuestion, values);
+      return res.status(200).json({
+        status: 200,
+        data: [
+          response.rows[0],
+        ],
+      });
+    } catch (error) {
+      return res.status(400).send({ message: error.message });
+    }
+  }
+
+  static async downvoteQuestion(req, res) {
+    const findQuestionById = 'SELECT * FROM questions WHERE id = $1';
+    try {
+      const { rows } = await db.query(findQuestionById, [req.params.id]);
+      if (!rows[0]) {
+        return res.status(404).json({ message: 'Question not found' });
+      }
+      const upvotedUser = rows[0].users;
+      if (_.has(upvotedUser, req.user.id, false)) {
+        return res.status(400).json({ alreadyupvoted: 'User has not upvoted this question' });
+      }
+      const updateAQuestion = `UPDATE questions
+      SET users=array[ $1 ],votes= $2
+      WHERE id=$3 returning *`;
+      const values = [
+        req.user.id || rows[0].users,
+        rows[0].votes -= 1 || rows[0].votes,
+        req.params.id,
       ];
       const response = await db.query(updateAQuestion, values);
       return res.status(200).json({
