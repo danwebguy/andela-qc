@@ -31,7 +31,8 @@ const dbSchema = `
     title VARCHAR(255) NOT NULL,
     body VARCHAR(255) NOT NULL,
     users TEXT [],
-    votes INTEGER
+    votes INTEGER NOT NULL
+    constraint votes_nonnegative check (votes >= 0)
   );
   DROP TABLE IF EXISTS comments CASCADE;
   CREATE TABLE comments (
@@ -43,7 +44,7 @@ const dbSchema = `
   );
   INSERT INTO users(
     firstname, lastname, othername, username, email, phonenumber, password)
-    VALUES ('Daniel', 'Ufeli', 'Anwana', 'danwebguy', 'danielufeli@yahoo.com', '08082205956', '$2a$10$3SYL/3C6r8qpA14BLgmj9.ZsPkYhMAd.5nvqGCVWh3RKsqVta8/Dm');
+    VALUES ('Daniel', 'Ufeli', 'Anwana', 'danwebguy', 'danielufeli@yahoo.com', '08082205956', '$2a$10$MjDd29.fW5U2/FlO.irBN.I68xQn6YDNO2mS4X6xbqaR0AxlYkkWa');
     INSERT INTO users(
       firstname, lastname, othername, username, email, phonenumber, password, isadmin)
       VALUES ('Daniel', 'Ufeli', 'Anwana', 'danwebguy', 'james@yahoo.com', '08082205956', '$2a$10$MjDd29.fW5U2/FlO.irBN.I68xQn6YDNO2mS4X6xbqaR0AxlYkkWa', 'true');
@@ -56,5 +57,8 @@ const dbSchema = `
           INSERT INTO meetup(
             location, happeningon, topic, images)
             VALUES ('Lagos', '2019-02-02', 'Welfare', '{"Welfare1"}');
+            INSERT INTO questions(
+              createdby, meetup, title, body, users, votes)
+              VALUES ('2', '3', 'Jesus is Lord', 'Jesus is Lord | We made it', '{"2"}', '10');
 `;
 export default dbSchema;
