@@ -120,5 +120,31 @@ class meetupController {
       return res.status(400).json(err);
     }
   }
+
+  static async addTagsMeetup(req, res) {
+    const findMeetupById = 'SELECT * FROM meetup WHERE id = $1';
+    const meetup = req.params.id;
+    const { tags } = req.body;
+    try {
+      const { rows } = await db.query(findMeetupById, [req.params.id]);
+      if (!rows[0]) {
+        return res.status(404).json({ message: 'Meetup not found' });
+      }
+      const findAllRsvp = `UPDATE meetup SET tags = array['${tags}'] WHERE id='${meetup}' RETURNING *`;
+      const results = await db.query(findAllRsvp);
+      const result = Object.assign({}, results.rows[0]);
+      delete result.createdon;
+      delete result.location;
+      delete result.happeningon;
+      delete result.images;
+      return res.status(200).json({
+        status: 200,
+        data:
+          result,
+      });
+    } catch (error) {
+      return res.status(400).send({ message: error.message });
+    }
+  }
 }
 export default meetupController;
