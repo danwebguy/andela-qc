@@ -26,13 +26,13 @@ class questionsController {
     const meetup = req.params.id;
     const createdBy = req.user.id;
     const { body, title } = req.body;
-    const findAllQuestions = `INSERT INTO questions (body, title, meetup, createdBy) VALUES ('${body}','${title}', '${meetup}', '${createdBy}') returning *`;
+    const postQuestions = `INSERT INTO questions (body, title, meetup, createdBy) VALUES ('${body}','${title}', '${meetup}', '${createdBy}') returning *`;
     try {
       const { rows } = await db.query(findMeetupById, [req.params.id]);
       if (!rows[0]) {
         return res.status(404).json({ message: 'Meetup not found' });
       }
-      const results = await db.query(findAllQuestions);
+      const results = await db.query(postQuestions);
       return res.status(201).json({
         status: 201,
         data: [

@@ -1,11 +1,13 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import dotenv from 'dotenv';
 import server from '../../server';
 
 chai.use(chaiHttp);
 chai.should();
+dotenv.config();
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjIsImFkbWluIjp0cnVlLCJpYXQiOjE1NDgyMjIzMDJ9.jeI-rw4tS4lbj7m1PzXLf0i75D6CwRTmmq_ExiArOhY';
+const token = process.env.tokenKey;
 
 describe('/Post comments/:questionid', () => {
   it('Should create a question', (done) => {

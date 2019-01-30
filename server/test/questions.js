@@ -1,13 +1,15 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import dotenv from 'dotenv';
 import server from '../../server';
 
 chai.use(chaiHttp);
 chai.should();
+dotenv.config();
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjIsImFkbWluIjp0cnVlLCJpYXQiOjE1NDgyMjIzMDJ9.jeI-rw4tS4lbj7m1PzXLf0i75D6CwRTmmq_ExiArOhY';
+const token = process.env.tokenKey;
 
-describe('/GET questions', () => {
+describe('Test question endpoints', () => {
   it('it should get all the questions', (done) => {
     chai.request(server)
       .get('/api/v1/questions')
@@ -18,8 +20,6 @@ describe('/GET questions', () => {
         done();
       });
   });
-});
-describe('/Post questions/:meetupid', () => {
   it('Should create a question', (done) => {
     chai.request(server)
       .post('/api/v1/questions/1')
@@ -62,8 +62,6 @@ describe('/Post questions/:meetupid', () => {
         done();
       });
   });
-});
-describe('/PATCH questions/:id/upvote', () => {
   it('it should upvote a question', (done) => {
     chai.request(server)
       .patch('/api/v1/questions/1/upvote')
@@ -74,8 +72,6 @@ describe('/PATCH questions/:id/upvote', () => {
         done();
       });
   });
-});
-describe('/PATCH questions/:id/downvote', () => {
   it('it should downvote a question', (done) => {
     chai.request(server)
       .patch('/api/v1/questions/1/downvote')
