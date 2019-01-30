@@ -4,13 +4,13 @@ import isEmpty from './is-empty';
 const validateRsvpInput = (data) => {
   const errors = {};
 
-  data.status = !isEmpty(data.status) ? data.status : '';
-  if (!Validator.isIn(data.status, ['yes', 'maybe'])) {
-    errors.status = 'please enter yes or maybe';
+  data.response = !isEmpty(data.response) ? data.response : '';
+  if (!Validator.isIn(data.response, ['yes', 'no', 'maybe'])) {
+    errors.response = 'please enter yes or maybe';
   }
 
-  if (Validator.isEmpty(data.status)) {
-    errors.status = 'status is required';
+  if (Validator.isEmpty(data.response)) {
+    errors.response = 'response is required';
   }
 
   return {

@@ -30,17 +30,25 @@ const dbSchema = `
     meetup INTEGER NOT NULL, 
     title VARCHAR(255) NOT NULL,
     body VARCHAR(255) NOT NULL,
-    users TEXT [],
-    votes INTEGER NOT NULL
+    users TEXT [] DEFAULT '{"0"}',
+    votes INTEGER DEFAULT '0',
     constraint votes_nonnegative check (votes >= 0)
   );
   DROP TABLE IF EXISTS comments CASCADE;
   CREATE TABLE comments (
-    question_id INTEGER PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY,
+    question INTEGER NOT NULL,
     title VARCHAR(255),
     body VARCHAR(255),
-    comment VARCHAR(255) NOT NULL,
-    FOREIGN KEY (question_id) REFERENCES questions (id) ON DELETE RESTRICT
+    comment TEXT NOT NULL
+  );
+  DROP TABLE IF EXISTS rsvp CASCADE;
+  CREATE TABLE rsvp (
+    id SERIAL PRIMARY KEY,
+    meetup INTEGER,
+    topic VARCHAR(255),
+    userId INTEGER,
+    response VARCHAR(255) UNIQUE DEFAULT 'Yes'
   );
   INSERT INTO users(
     firstname, lastname, othername, username, email, phonenumber, password)

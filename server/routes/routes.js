@@ -4,6 +4,7 @@ import users from './users';
 import questions from './questions';
 import rsvp from './rsvp';
 import meetups from './meetups';
+import comments from './comments';
 
 export default (app) => {
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -13,4 +14,5 @@ export default (app) => {
   app.use('/api/v1/meetups', meetups);
   app.use('/api/v1/questions', questions);
   app.use('/api/v1/meetups', rsvp);
+  app.use('/api/v1/comments', comments);
 };

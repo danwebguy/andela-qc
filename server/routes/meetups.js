@@ -18,4 +18,6 @@ router.delete('/:id', auth.verifyToken, isadmin, meetupController.deleteMeetup);
 
 router.post('/', auth.verifyToken, isadmin, meetupController.createMeetup);
 
+router.post('/:id/tags', auth.verifyToken, isadmin, meetupController.addTagsMeetup);
+
 export default router;

@@ -32,14 +32,11 @@ class questionsController {
       if (!rows[0]) {
         return res.status(404).json({ message: 'Meetup not found' });
       }
-      await db.query(findAllQuestions);
+      const results = await db.query(findAllQuestions);
       return res.status(200).json({
         status: 200,
         data: [
-          createdBy,
-          meetup,
-          title,
-          body,
+          results.rows,
         ],
       });
     } catch (error) {
@@ -59,10 +56,9 @@ class questionsController {
         return res.status(400).json({ alreadyupvoted: 'User already upvoted this question' });
       }
       const updateAQuestion = `UPDATE questions
-      SET users=array[ $1 ],votes= $2
-      WHERE id=$3 returning *`;
+      SET users = array_cat(users, '{${req.user.id}}'),votes= $1
+      WHERE id=$2 returning *`;
       const values = [
-        req.user.id || rows[0].users,
         rows[0].votes += 1 || rows[0].votes,
         req.params.id,
       ];
@@ -90,10 +86,9 @@ class questionsController {
         return res.status(400).json({ alreadyupvoted: 'User has not upvoted this question' });
       }
       const updateAQuestion = `UPDATE questions
-      SET users=array[ $1 ],votes= $2
-      WHERE id=$3 returning *`;
+      SET votes= $1
+      WHERE id=$2 returning *`;
       const values = [
-        req.user.id || rows[0].users,
         rows[0].votes -= 1 || rows[0].votes,
         req.params.id,
       ];
