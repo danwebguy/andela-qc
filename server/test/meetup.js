@@ -98,3 +98,40 @@ describe('/GET upcoming meetups', () => {
       });
   });
 });
+describe('/GET meetup by ID', () => {
+  it('it should get meetup by ID', (done) => {
+    chai.request(server)
+      .get('/api/v1/meetups/1')
+      .set('x-auth-token', token)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('it should fail with a wrong ID', (done) => {
+    chai.request(server)
+      .get('/api/v1/meetups/0')
+      .set('x-auth-token', token)
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+});
+describe('/Post/meetups/:id/tags', () => {
+  it('Should create tags for meetup', (done) => {
+    chai.request(server)
+      .post('/api/v1/meetups/1/tags')
+      .set('x-auth-token', token)
+      .send({
+        tags: 'Andela, Meetups',
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+});

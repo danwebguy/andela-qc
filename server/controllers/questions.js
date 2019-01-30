@@ -33,8 +33,8 @@ class questionsController {
         return res.status(404).json({ message: 'Meetup not found' });
       }
       const results = await db.query(findAllQuestions);
-      return res.status(200).json({
-        status: 200,
+      return res.status(201).json({
+        status: 201,
         data: [
           results.rows,
         ],
