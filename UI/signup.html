@@ -10,20 +10,23 @@
 <body>
   <div class="signup-flex-container">
         <div class="login-main-content">
-    <form action="" class="login-form">
+    <form id="signUpForm" class="login-form">
     <a href="index.html"><img src="img/avatar.png" alt="Back to Home" class="avatar"></a>
     <h1>Sign up Here</h1>
-        <input type="text" name="" placeholder="First Name">
-        <input type="text" name="" placeholder="Last Name">
-        <input type="email" name="" placeholder="E-mail">
-        <input type="text" name="" placeholder="Mobile No.">
-        <input type="text" name="" placeholder="Username">
-        <input type="password" name="" placeholder="Password">
-        <input type="password" name="" placeholder="Confirm Password">
-        <input type="submit" value="Signup">
+    <p id="errorlog" class="warning"></p><br>
+        <input type="text" id="fname" placeholder="First Name" required>
+        <input type="text" id="lname" placeholder="Last Name" required> 
+        <input type="text" id="othername" placeholder="Other Name" required>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <input type="text" id="phoneno" placeholder="Mobile No." required>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="cpassword" placeholder="Confirm Password" required>
+        <input type="submit" id="signupBtn" value="Signup" required>
         <p>Already have an account? <a href="signin.html"> Sign in</a></p>
     </form>
     </div>
   </div>
 </body>
+<script src="./js/signup.js"></script>
 </html>

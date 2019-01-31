@@ -6,7 +6,6 @@ const validateUserInput = (data) => {
 
   data.firstname = !isEmpty(data.firstname) ? data.firstname : '';
   data.lastname = !isEmpty(data.lastname) ? data.lastname : '';
-  data.othername = !isEmpty(data.othername) ? data.othername : '';
   data.email = !isEmpty(data.email) ? data.email : '';
   data.phonenumber = !isEmpty(data.phonenumber) ? data.phonenumber : '';
   data.username = !isEmpty(data.username) ? data.username : '';
@@ -18,10 +17,6 @@ const validateUserInput = (data) => {
 
   if (Validator.isEmpty(data.lastname)) {
     errors.lastname = 'lastname field is required';
-  }
-
-  if (Validator.isEmpty(data.othername)) {
-    errors.othername = 'other field is required';
   }
 
   if (!Validator.isEmail(data.email)) {
