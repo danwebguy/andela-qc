@@ -18,8 +18,8 @@ class rsvpController {
       }
       const findAllRsvp = `INSERT INTO rsvp (meetup, userId, response, topic) VALUES ('${meetup}','${userId}', '${response}', '${rows[0].topic}') returning *`;
       const results = await db.query(findAllRsvp);
-      return res.status(200).json({
-        status: 200,
+      return res.status(201).json({
+        status: 201,
         data: [
           results.rows,
         ],

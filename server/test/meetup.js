@@ -1,13 +1,15 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import dotenv from 'dotenv';
 import server from '../../server';
 
 chai.use(chaiHttp);
 chai.should();
+dotenv.config();
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjIsImFkbWluIjp0cnVlLCJpYXQiOjE1NDgyMjIzMDJ9.jeI-rw4tS4lbj7m1PzXLf0i75D6CwRTmmq_ExiArOhY';
+const token = process.env.tokenKey;
 
-describe('/GET meetups', () => {
+describe('test meetups endpoint', () => {
   it('it should get all the meetups', (done) => {
     chai.request(server)
       .get('/api/v1/meetups')
@@ -18,9 +20,7 @@ describe('/GET meetups', () => {
         done();
       });
   });
-});
 
-describe('/Post meetup', () => {
   it('Should create meet up', (done) => {
     chai.request(server)
       .post('/api/v1/meetups')
@@ -85,14 +85,45 @@ describe('/Post meetup', () => {
         done();
       });
   });
-});
-describe('/GET upcoming meetups', () => {
   it('it should get upcoming all the meetups', (done) => {
     chai.request(server)
       .get('/api/v1/meetups/upcoming')
       .set('x-auth-token', token)
       .end((err, res) => {
         res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('it should get meetup by ID', (done) => {
+    chai.request(server)
+      .get('/api/v1/meetups/1')
+      .set('x-auth-token', token)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('it should fail with a wrong ID', (done) => {
+    chai.request(server)
+      .get('/api/v1/meetups/0')
+      .set('x-auth-token', token)
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('Should create tags for meetup', (done) => {
+    chai.request(server)
+      .post('/api/v1/meetups/1/tags')
+      .set('x-auth-token', token)
+      .send({
+        tags: 'Andela, Meetups',
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(200);
         res.body.should.be.a('object');
         done();
       });
