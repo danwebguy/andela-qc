@@ -43,8 +43,8 @@ class userController {
       const token = authtok.generateToken(rows[0].id, rows[0].isadmin);
       const result = Object.assign({}, rows[0]);
       delete result.password;
-      return res.status(200).json({
-        status: 200,
+      return res.status(201).json({
+        status: 201,
         data: [
           token,
           result,
