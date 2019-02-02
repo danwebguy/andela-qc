@@ -4,13 +4,12 @@ import validateMeetupInput from '../helpers/meetup';
 
 class meetupController {
   static async getMeetups(req, res) {
-    const findAllMeetups = 'SELECT * FROM meetup ORDER BY happeningOn ASC';
+    const findAllMeetups = await db.query('SELECT * FROM meetup ORDER BY happeningOn ASC');
     try {
-      const { rows, rowCount } = await db.query(findAllMeetups);
       return res.status(200).json({
         status: 200,
         data: [
-          { rows, rowCount },
+          findAllMeetups.rows,
         ],
       });
     } catch (error) {
@@ -57,14 +56,15 @@ class meetupController {
       return res.status(400).json(errors);
     }
     const meetups = `INSERT INTO
-      meetup(location, images, topic, happeningon)
-      VALUES($1, array[ $2 ], $3, $4)
+      meetup(location, images, topic, happeningon, description)
+      VALUES($1, array[ $2 ], $3, $4, $5)
       returning *`;
     const values = [
       req.body.location,
       req.body.images,
       req.body.topic,
       req.body.happeningOn,
+      req.body.description,
     ];
     try {
       const { rows } = await db.query(meetups, values);
@@ -100,8 +100,8 @@ class meetupController {
   static async updateMeetup(req, res) {
     const findMeetupById = 'SELECT * FROM meetup WHERE id=$1';
     const updateAmeetup = `UPDATE meetup
-      SET location=$1,images=array[ $2 ],happeningOn=$3,topic=$4
-      WHERE id=$5 returning *`;
+      SET location=$1,images=array[ $2 ],happeningOn=$3,topic=$4,description=$5
+      WHERE id=$6 returning *`;
     try {
       const { rows } = await db.query(findMeetupById, [req.params.id]);
       if (!rows[0]) {
@@ -112,6 +112,7 @@ class meetupController {
         req.body.images || rows[0].images,
         req.body.happeningOn || rows[0].happeningOn,
         req.body.topic || rows[0].topic,
+        req.body.description || rows[0].description,
         req.params.id,
       ];
       const response = await db.query(updateAmeetup, values);
@@ -137,6 +138,7 @@ class meetupController {
       delete result.location;
       delete result.happeningon;
       delete result.images;
+      delete result.description;
       return res.status(200).json({
         status: 200,
         data:

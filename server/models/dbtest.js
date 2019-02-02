@@ -6,6 +6,7 @@ const dbSchema = `
     location VARCHAR(255) NOT NULL,
     topic VARCHAR(255) UNIQUE NOT NULL,
     happeningOn TIMESTAMP NOT NULL,
+    description TEXT NULL,
     images TEXT [],
     tags TEXT []
   );
@@ -57,14 +58,13 @@ const dbSchema = `
       firstname, lastname, othername, username, email, phonenumber, password, isadmin)
       VALUES ('Daniel', 'Ufeli', 'Anwana', 'danwebguy', 'james@yahoo.com', '08082205956', '$2a$10$MjDd29.fW5U2/FlO.irBN.I68xQn6YDNO2mS4X6xbqaR0AxlYkkWa', 'true');
       INSERT INTO meetup(
-        location, happeningon, topic, images)
-        VALUES ('Lagos', '2019-02-02', 'Welfare2', '{"Welfare1"}');
+        location, happeningon, topic, images, description)
+        VALUES ('Lagos', '2019-02-04', 'Social Media Week Lagos 2019', 
+        '{"img/e1.jpg"}', 'Social Media Week Lagos heads into it 7th year after a successful 2018 edition that saw over 20,000 attendees across the week and had a online social reach of 646 million');
         INSERT INTO meetup(
-          location, happeningon, topic, images)
-          VALUES ('Lagos', '2019-02-02', 'Welfare1', '{"Welfare1"}');
-          INSERT INTO meetup(
-            location, happeningon, topic, images)
-            VALUES ('Lagos', '2019-02-02', 'Welfare', '{"Welfare1"}');
+          location, happeningon, topic, images, description)
+          VALUES ('Lagos', '2019-12-22', 'Lagos Weight Loss and Wellness Support Group', 
+          '{"img/meetup1.jpg"}', 'Finally you can find the motivation to achieve your goal weight and lose weight without feeling deprived or hungry.');
             INSERT INTO questions(
               createdby, meetup, title, body, users, votes)
               VALUES ('2', '3', 'Jesus is Lord', 'Jesus is Lord | We made it', '{"2"}', '10');

@@ -226,7 +226,8 @@ article#main-col1 h1{
 /* user-dashboard */
 ul#meetup1 li{
   list-style: none;
-  padding:20px;
+  padding:10px;
+  margin: 10px;
   border: #cccccc solid 1px;
   background:#fff;
   display: flex;
@@ -609,9 +610,8 @@ ul#comment li{
   }
 
   .entry-thumb {
-    width: 100px;
+    width: 250px;
     flex: none;
-    margin-right: 15px;
   }
 
   .entry-header {
@@ -692,4 +692,16 @@ min-width: 50%;
 }
 .close:hover {
   background: #00d9ff;
+}
+
+.space{
+  padding: 20px;
+}
+
+.warning {
+  border: 1px solid;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #FF0000;
+  background-color: #ffffff;
 }
