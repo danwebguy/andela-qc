@@ -1,5 +1,5 @@
 const getallmeetups = () => {
-  const url = 'http://localhost:3000/api/v1/meetups/';
+  const url = 'https://young-brushlands-72186.herokuapp.com/api/v1/meetups/';
 
   let userToken = '';
   if (localStorage.getItem('token')) {
@@ -7,7 +7,7 @@ const getallmeetups = () => {
   } else {
     window.location.href = 'signin.html';
   }
-
+  document.getElementById('meetups').innerHTML = `<img src="img/loading.gif">`;
   fetch(url, {
     method: 'GET',
     headers: {

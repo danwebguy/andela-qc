@@ -18,7 +18,7 @@ const postQuestion = () => {
   const qBody = document.getElementById('qbody').value;
   const userid = '1';
 
-  const url = `http://localhost:3000/api/v1/questions/${meetupId}`;
+  const url = `https://young-brushlands-72186.herokuapp.com/api/v1/questions/${meetupId}`;
 
   const questionData = {
     title: qTitle,
@@ -46,7 +46,8 @@ const postQuestion = () => {
 };
 
 const getSingleMeetup = () => {
-  const url = `http://localhost:3000/api/v1/meetups/${meetupId}`;
+  const url = `https://young-brushlands-72186.herokuapp.com/api/v1/meetups/${meetupId}`;
+  document.getElementById('singleMeetup').innerHTML = '<img src="img/loading.gif">';
   fetch(url, {
     method: 'GET',
     headers: {
@@ -107,7 +108,7 @@ const getSingleMeetup = () => {
 getSingleMeetup();
 
 const getQuestions = () => {
-  const url = 'http://localhost:3000/api/v1/questions';
+  const url = 'https://young-brushlands-72186.herokuapp.com/api/v1/questions';
   fetch(url, {
     method: 'GET',
     headers: {
