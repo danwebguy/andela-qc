@@ -20,78 +20,23 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="index.html">Logout</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <div class="container">
-      <h1 class="shead">Social Media Week Lagos 2019</h1>
-    </div>
 
-  <section id="main-col1">
-    <div class="container">
-    <aside id="sidebar">
-      
-        <div class="card">
-          <h1>Infomation on meetup</h1>
-            <p>Saturday, December 22, 2018<br>8:00 AM to 9:30 AM</p>
-            <p class="title"> 9 Africa Lane Off Admiralty Road Lekki 1 · Lagos</p>
-            <p><button>Are you going?</button></p>
-            
-          </div>
-          <img src="./img/map.png" alt="">
-      </aside>
+  <div id="singleMeetup"></div>
 
-      <article id="main-col1">
-        <div class="meetup_head">
-            <img src="./img/e1.jpg" width="100%">
-            <p>Social Media Week Lagos heads into it's 7th year after a successful 2018 edition that saw over 20,000 attendees across the week and had a online social reach of 646 million. The annual conference now considered Africa's largest digital media & tech event returns to Landmark Centre on the 4th thru to the 8th of February 2018. </p>
-            <form>
-                <p> <strong>Post a Question:</strong> </p>
-               <textarea placeholder="Type in your question"></textarea>
-               <br>
-               <input type="submit" value="Submit">
-            </form>
-          </div>
-          
-        <ul id="comment">
-          
-          <li>
-            <p><img src="img/avatar.png" class="img">James's Question: <br>I am so big, how can I loose weight?<br>
-              <a href="#"><img src="img/thumb1.png" alt="Upvote"></a> 1200 
-              <a href="#"><img src="img/thumbdown.png" alt="Downvote"></a> 98 
-              <a href="comment.html"><button>Comment</button></a>
-              </p>
-            </li>
-
-            <li>
-                <p><img src="img/avatar.png" class="img">James's Question: <br>I am so big, how can I loose weight?<br>
-                  <a href="#"><img src="img/thumb1.png" alt="Upvote"></a> 1200 
-                  <a href="#"><img src="img/thumbdown.png" alt="Downvote"></a> 98 
-                  <a href="comment.html"><button>Comment</button></a>
-                  </p>
-                </li>
-
-                <li>
-                    <p><img src="img/avatar.png" class="img">James's Question: <br>I am so big, how can I loose weight?
-                      <br>
-                      <a href="#"><img src="img/thumb1.png" alt="Upvote"></a> 1200 
-                      <a href="#"><img src="img/thumbdown.png" alt="Downvote"></a> 98 
-                      <a href="comment.html"><button>Comment</button></a>
-                      </p>
-                    </li>
-          
-        </ul>
-    </article>
-
-  </div>
-  </section>
-    
     <footer>
       <p>Questioner, Copyright &copy, 2019</p>
     </footer>
-
+    <div id="openModal" class="modalDialog">
+      <div>	<a href="#close" title="Close" class="close">X</a>
+          <p><button class="button_1">Yes</button> | <button class="button_1">No</button> | <button class="button_1">Maybe</button></p>
+      </div>
+  </div>
 
 </body>
+<script src="./js/singlemeetup.js"></script>
+<script src="./js/moment.min.js"></script>
 </html>
