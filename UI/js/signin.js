@@ -1,14 +1,14 @@
-const signForm = (e) => {
-  e.preventDefault();
+const signForm = () => {
   const userEmail = document.getElementById('email').value;
   const userPassword = document.getElementById('password').value;
 
-  const url = 'http://localhost:3000/api/v1/auth/login';
+  const url = 'https://young-brushlands-72186.herokuapp.com/api/v1/auth/login';
 
   const signInData = {
     email: userEmail,
     password: userPassword,
   };
+  document.getElementById('errorlog').innerHTML = '<img src="img/loading.gif">';
   fetch(url, {
     method: 'POST',
     headers: {

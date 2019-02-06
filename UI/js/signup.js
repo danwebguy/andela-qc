@@ -8,7 +8,7 @@ const signUpForm = (e) => {
   const userPassword = document.getElementById('password').value;
   const userName = document.getElementById('username').value;
 
-  const url = 'http://localhost:3000/api/v1/auth/signup';
+  const url = 'https://young-brushlands-72186.herokuapp.com/api/v1/auth/signup';
 
   const signUpData = {
     email: userEmail,
@@ -19,6 +19,7 @@ const signUpForm = (e) => {
     phonenumber: phoneNumber,
     username: userName,
   };
+  document.getElementById('errorlog').innerHTML = `<img src="img/loading.gif">`;
   fetch(url, {
     method: 'POST',
     headers: {
